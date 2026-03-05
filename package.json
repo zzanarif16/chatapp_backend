@@ -1,7 +1,7 @@
 {
   "name": "chatpp-backend",
   "version": "1.0.0",
-  "main": "index.js", // legacy, not used by Vercel
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node index.js"
