@@ -1,49 +1,71 @@
-# Chatpp Backend (Express.js)
+# ChatApp Backend (Vercel Functions)
 
-Backend API untuk aplikasi chat, menggunakan Express.js dan MySQL Clever Cloud.
+Backend API untuk aplikasi chat, dideploy ke Vercel project `chatapp-backend`.
 
-## Fitur
+## Endpoint Utama
 
-- Koneksi ke database MySQL Clever Cloud
-- Endpoint contoh: /api/users, /api/conversations
-- Siap dikembangkan untuk fitur chat, kontak, grup, dsb
+- `GET /api/users`
+- `GET /api/conversations`
 
-## Struktur Project
+## Jalankan Lokal
 
-- `index.js` — Main Express app
-- `.env.example` — Contoh konfigurasi environment
-- `package.json` — Konfigurasi npm
-
-## Cara Menjalankan Lokal
-
-1. Clone repo ini:
+1. Masuk folder project:
    ```bash
-   git clone https://github.com/zzanarif16/chatpp-backend.git
    cd chatpp-backend
    ```
-2. Copy file `.env.example` menjadi `.env` dan isi dengan kredensial MySQL Clever Cloud Anda.
-3. Install dependencies:
+2. Copy `.env.example` jadi `.env`, lalu isi kredensial database.
+3. Install dependency:
    ```bash
    npm install
    ```
-4. Jalankan server:
+4. Jalankan server lokal:
    ```bash
-   node index.js
+   npm start
    ```
-5. Cek endpoint: [http://localhost:3000/api/users](http://localhost:3000/api/users)
+5. Test endpoint:
+   - `http://localhost:3000/api/users`
+   - `http://localhost:3000/api/conversations`
 
-## Deploy ke Railway/Render
+## Push ke GitHub Repo `chatapp-backend`
 
-1. Buat project baru di Railway/Render.
-2. Upload semua file backend.
-3. Atur environment variable sesuai file `.env`.
-4. Deploy, dapatkan URL backend API publik.
+Contoh jika remote belum ada:
 
-## Integrasi dengan Frontend
+```bash
+git init
+git add .
+git commit -m "setup backend for vercel"
+git branch -M main
+git remote add origin https://github.com/<username>/chatapp-backend.git
+git push -u origin main
+```
 
-- Frontend (Astro) fetch data dari endpoint API backend ini.
-- Pastikan backend dapat diakses publik (bukan localhost).
+Jika remote sudah ada:
 
-## Lisensi
+```bash
+git add .
+git commit -m "update backend for vercel"
+git push
+```
 
-Bebas digunakan untuk pembelajaran dan pengembangan.
+## Deploy ke Vercel Project `chatapp-backend`
+
+1. Import repo `chatapp-backend` di Vercel.
+2. Tambahkan Environment Variables:
+   - `DB_HOST`
+   - `DB_USER`
+   - `DB_PASSWORD`
+   - `DB_NAME`
+   - `DB_PORT`
+3. Deploy.
+
+## Integrasi ke Frontend Astro
+
+Di project frontend (`chatapp`), set:
+
+```env
+PUBLIC_API_BASE_URL=https://chatapp-backend-lh6y8i35j-zzanarif16s-projects.vercel.app
+```
+
+Frontend production saat ini:
+
+- `https://chatapp-ekwhv4a7b-zzanarif16s-projects.vercel.app/`
